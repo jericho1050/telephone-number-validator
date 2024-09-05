@@ -1,6 +1,5 @@
 const get = (element) => document.getElementById(element);
 
-
 class App {
   constructor() {
     this.render();
@@ -9,7 +8,7 @@ class App {
   }
 
   render() {
-    get("root").innerHTML = `
+    get('root').innerHTML = `
         <h1><span>TELEPHONE NUMBER</span> <span>VALIDATOR</span></h1>
         <div class="marvel-device iphone-x">
             <div class="notch">
@@ -46,15 +45,14 @@ class App {
             </div>
         </div>
         `;
-
   }
   bindEvents() {
-    get("check-btn").addEventListener("click", () => this.handleCheck());
-    get("clear-btn").addEventListener("click", () => this.handleClear());
-    get("user-input").addEventListener("input", (e) => this.handleInput(e));
+    get('check-btn').addEventListener('click', () => this.handleCheck());
+    get('clear-btn').addEventListener('click', () => this.handleClear());
+    get('user-input').addEventListener('input', (e) => this.handleInput(e));
   }
 
-  handleInput(e){
+  handleInput(e) {
     this.input = e.target.value;
   }
 
@@ -62,7 +60,7 @@ class App {
     const isValid = this.validatePhoneNumber(this.input);
     this.updateResults(isValid);
   }
-  
+
   handleClear() {
     this.input = ''; // clear state
     get('user-input').value = ''; // clear the element's input field
@@ -86,10 +84,11 @@ class App {
     if (isValid === '') {
       resultsDiv.innerHTML = ''; // Clear the results div without displaying any message
     } else {
-      resultsDiv.innerHTML = isValid ? `Valid US number: ${this.input}` : `Invalid US number: ${this.input}`;
+      resultsDiv.innerHTML = isValid
+        ? `Valid US number: ${this.input}`
+        : `Invalid US number: ${this.input}`;
     }
   }
-
 }
 
 new App();
